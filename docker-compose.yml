@@ -9,6 +9,6 @@ services:
     volumes:
       - ./app:/app
     command: >
-      sh -c "python main.py"
+      sh -c "sh entrypoint.sh"
     environment:
       - FOO=BAR
