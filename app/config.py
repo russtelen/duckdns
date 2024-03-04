@@ -79,5 +79,23 @@ class BaseConfig:
 
 @dataclass
 class Config(BaseConfig):
+    VALID_RUN_TYPES: ClassVar = ['schedule', 'once']
+
     DUCKDNS_SUBDOMAIN: str
     DUCKDNS_TOKEN: str
+
+    RUN_TYPE: str = ''
+
+    def __post_init__(self):
+        self._add_post_init_args()
+        super().__post_init__()
+        self._validate_run_type()
+
+
+    def _add_post_init_args(self):
+        if not self.RUN_TYPE:
+            self.RUN_TYPE = 'schedule'
+
+    def _validate_run_type(self):
+        if self.RUN_TYPE not in self.VALID_RUN_TYPES:
+            raise TypeError(f'Invalid run type: `{self.RUN_TYPE}`')
