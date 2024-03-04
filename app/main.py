@@ -27,7 +27,7 @@ class Application:
     def run(self):
         if self.config.RUN_TYPE == 'schedule':
             print('Running refresh scheduled.')
-            print(f'Polling interval: {self.DEFAULT_POLLING_TIME_IN_SECONDS * 60} min')
+            print(f'Polling interval: {self.DEFAULT_POLLING_TIME_IN_SECONDS / 60} min')
             while True:
                 self.duck_client.refresh_ip(domain=self.config.DUCKDNS_SUBDOMAIN)
                 sleep(self.DEFAULT_POLLING_TIME_IN_SECONDS)
