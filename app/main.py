@@ -1,4 +1,7 @@
-import os
+from api.DuckDNS import DuckDNS
+from config import Config
 
-print('hello world')
-print(os.getenv('FOO'))
+config = Config.from_env()
+
+duck = DuckDNS(token=config.DUCKDNS_TOKEN)
+duck.refresh_ip(domain=config.DUCKDNS_DOMAIN)

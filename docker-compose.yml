@@ -10,5 +10,5 @@ services:
       - ./app:/app
     command: >
       sh -c "sh entrypoint.sh"
-    environment:
-      - FOO=BAR
+    env_file:
+      - .env

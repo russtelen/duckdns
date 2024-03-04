@@ -25,5 +25,5 @@ class DuckDNS(BaseAPI):
             }
         )
         if res.text.lower() != 'ok':
-            raise DucksDNSError(f'Failed to update {domain}: {res}')
+            raise DucksDNSError(f'Failed to update {domain}: {res.text}')
         print(res.text)
