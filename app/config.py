@@ -79,5 +79,5 @@ class BaseConfig:
 
 @dataclass
 class Config(BaseConfig):
-    DUCKDNS_DOMAIN: str
+    DUCKDNS_SUBDOMAIN: str
     DUCKDNS_TOKEN: str

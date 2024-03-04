@@ -9,6 +9,6 @@ if __name__ == '__main__':
         config = Config.from_env()
 
         duck = DuckDNS(token=config.DUCKDNS_TOKEN)
-        duck.refresh_ip(domain=config.DUCKDNS_DOMAIN)
+        duck.refresh_ip(domain=config.DUCKDNS_SUBDOMAIN)
 
         sleep(60*5)
