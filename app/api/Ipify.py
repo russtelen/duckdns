@@ -18,4 +18,4 @@ class Ipify(BaseAPI):
                 'format': 'json'
             }
         )
-        return IPAddress(res.json().get('ip', '0.0.0.0'))
+        return IPAddress(res.json().get('ip'))
