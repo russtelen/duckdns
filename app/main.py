@@ -1,7 +1,14 @@
 from api.DuckDNS import DuckDNS
 from config import Config
 
-config = Config.from_env()
+from time import sleep
 
-duck = DuckDNS(token=config.DUCKDNS_TOKEN)
-duck.refresh_ip(domain=config.DUCKDNS_DOMAIN)
+
+if __name__ == '__main__':
+    while True:
+        config = Config.from_env()
+
+        duck = DuckDNS(token=config.DUCKDNS_TOKEN)
+        duck.refresh_ip(domain=config.DUCKDNS_DOMAIN)
+
+        sleep(60*5)

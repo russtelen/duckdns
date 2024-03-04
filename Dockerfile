@@ -36,3 +36,5 @@ COPY ./app /app
 
 # update PATH env variable so when we run a command in docker, we dont need to specify the full path of our environment
 ENV PATH="/py/bin:$PATH"
+
+CMD ["sh", "entrypoint.sh"]

@@ -8,6 +8,8 @@ services:
         - DEV=true
     volumes:
       - ./app:/app
+    stdin_open: true
+    tty: true
     command: >
       sh -c "sh entrypoint.sh"
     env_file:
