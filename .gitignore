@@ -1,3 +1,4 @@
 .env
 app/venv
 __pycache__
+push.sh
