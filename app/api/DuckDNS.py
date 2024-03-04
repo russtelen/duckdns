@@ -15,7 +15,7 @@ class DuckDNS(BaseAPI):
         super().__init__(url=self.BASE_URL)
         self.token = token
 
-    def refresh_ip(self, domain: str, ip: IPAddress = None):
+    def refresh_ip(self, domain: str, ip: IPAddress = None, logs: bool = False):
         res = self.get(
             params='/update',
             query={
@@ -26,4 +26,5 @@ class DuckDNS(BaseAPI):
         )
         if res.text.lower() != 'ok':
             raise DucksDNSError(f'Failed to update {domain}: {res.text}. Check that you have the correct domain / token')
-        print(res.text)
+        if logs:
+            print(res.text)
