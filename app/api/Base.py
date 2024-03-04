@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 import requests
-from requests import Response
 
 
 class APIError(Exception):

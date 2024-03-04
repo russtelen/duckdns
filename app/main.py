@@ -5,9 +5,8 @@ from typing import ClassVar
 from api.DuckDNS import DuckDNS
 from config import Config
 
+from art import tprint
 
-# TODO
-# Add visuals
 
 @dataclass
 class Application:
@@ -17,6 +16,8 @@ class Application:
     duck_client: DuckDNS = None
 
     def __post_init__(self):
+        tprint('DuckDNS', font='calgphy2')
+
         if not self.config:
             self.config = Config.from_env()
 
@@ -26,6 +27,7 @@ class Application:
     def run(self):
         if self.config.RUN_TYPE == 'schedule':
             print('Running refresh scheduled.')
+            print(f'Polling interval: {self.DEFAULT_POLLING_TIME_IN_SECONDS * 60} min')
             while True:
                 self.duck_client.refresh_ip(domain=self.config.DUCKDNS_SUBDOMAIN)
                 sleep(self.DEFAULT_POLLING_TIME_IN_SECONDS)
@@ -33,7 +35,6 @@ class Application:
         elif self.config.RUN_TYPE ==  'once':
             print('Running refresh once.')
             self.duck_client.refresh_ip(domain=self.config.DUCKDNS_SUBDOMAIN)
-            print('Done.')
 
 
 if __name__ == '__main__':
