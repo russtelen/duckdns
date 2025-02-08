@@ -16,3 +16,4 @@ venv/
 
 # JS
 node_modules/
+push.sh
